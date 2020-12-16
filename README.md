@@ -1,57 +1,77 @@
-# Project Name
+---
+page_type: sample
+description: An Azure Maps Web SDK module that provides a layer that renders point data from a data source as HTML elements on the map.
+languages:
+- javascript
+- typescript
+products:
+- azure
+- azure-maps
+---
 
-(short, 1-3 sentenced, description of the project)
+# Azure Maps HTML Marker Layer module
 
-## Features
+An Azure Maps Web SDK module that provides a layer that renders point data from a data source as HTML elements on the map. This layer works with both GeoJSON based and Vector tile based data sources. 
 
-This project framework provides the following features:
+Only Point features will be rendered and not any points from other feature types.
 
-* Feature 1
-* Feature 2
-* ...
+## Getting started
 
-## Getting Started
+Download the project and copy the `azure-maps-html-marker-layer` JavaScript file from the `dist` folder into your project. 
 
-### Prerequisites
+See the [documentation](https://github.com/Azure-Samples/azure-maps-html-marker-layer/tree/main/docs) for more details on a specific feature or take a look at one of the samples below.
 
-(ideally very short, if any)
+## Samples
 
-- OS
-- Library version
-- ...
+[Clustered Pie Chart HTML Markers](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Clustered%20Pie%20Chart%20HTML%20Markers)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Clustered-Pie-Chart-HTML-Markers.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Clustered%20Pie%20Chart%20HTML%20Markers)
 
-### Installation
+[HTML Marker Layer](https://azuremapscodesamples.azurewebsites.net/index.html?sample=HTML%20Marker%20Layer)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/HTML-Marker-Layer.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=HTML%20Marker%20Layer)
 
-(ideally very short)
+[HTML Marker layer and vector tiles](https://azuremapscodesamples.azurewebsites.net/index.html?sample=HTML%20Marker%20layer%20and%20vector%20tiles)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/HTML-Marker-layer-and-vector-tiles.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=HTML%20Marker%20layer%20and%20vector%20tiles)
 
-- npm install [package name]
-- mvn install
-- ...
+[HTML marker layer events](https://azuremapscodesamples.azurewebsites.net/index.html?sample=HTML%20marker%20layer%20events)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/HTML-marker-layer-events.gif" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=HTML%20marker%20layer%20events)
 
-### Quickstart
-(Add steps to get up and running quickly)
+[Pie chart HTML marker options](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Pie%20chart%20HTML%20marker%20options)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Pie-chart-HTML-marker-options.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Pie%20chart%20HTML%20marker%20options)
 
-1. git clone [repository clone url]
-2. cd [respository name]
-3. ...
+[Pie Chart HTML Markers](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Pie%20Chart%20HTML%20Markers)
+<br/>[<img src="https://github.com/Azure-Samples/AzureMapsCodeSamples/raw/master/AzureMapsCodeSamples/SiteResources/screenshots/Pie-Chart-HTML-Markers.jpg" height="200px">](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Pie%20Chart%20HTML%20Markers)
 
+## Related Projects
 
-## Demo
+* [Azure Maps Web SDK Open modules](https://github.com/microsoft/Maps/blob/master/AzureMaps.md#open-web-sdk-modules) - A collection of open source modules that extend the Azure Maps Web SDK.
+* [Azure Maps Web SDK Samples](https://github.com/Azure-Samples/AzureMapsCodeSamples)
+* [Azure Maps Gov Cloud Web SDK Samples](https://github.com/Azure-Samples/AzureMapsGovCloudCodeSamples)
+* [Azure Maps & Azure Active Directory Samples](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+* [List of open-source Azure Maps projects](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)
 
-A demo app is included to show how to use the project.
+## Additional Resources
 
-To run the demo, follow these steps:
+* [Azure Maps (main site)](https://azure.com/maps)
+* [Azure Maps Documentation](https://docs.microsoft.com/azure/azure-maps/index)
+* [Azure Maps Blog](https://azure.microsoft.com/blog/topics/azure-maps/)
+* [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-maps.html)
+* [Azure Maps feedback](https://feedback.azure.com/forums/909172-azure-maps)
 
-(Add steps to start up the demo)
+## Contributing
 
-1.
-2.
-3.
+We welcome contributions. Feel free to submit code samples, file issues and pull requests on the repo and we'll address them as we can. 
+Learn more about how you can help on our [Contribution Rules & Guidelines](https://github.com/Azure-Samples/azure-maps-html-marker-layer/blob/main/CONTRIBUTING.md). 
 
-## Resources
+You can reach out to us anytime with questions and suggestions using our communities below:
+* [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-maps.html)
+* [Azure Maps feedback](https://feedback.azure.com/forums/909172-azure-maps)
 
-(Any additional resources or related projects)
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). 
+For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or 
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-- Link to supporting information
-- Link to similar sample
-- ...
+## License
+
+MIT
+ 
+See [License](https://github.com/Azure-Samples/azure-maps-html-marker-layer/blob/main/LICENSE.md) for full license text.

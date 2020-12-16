@@ -1,13 +1,9 @@
-## [project-title] Changelog
+## azure-maps-html-marker-layer Changelog
 
-<a name="x.y.z"></a>
-# x.y.z (yyyy-mm-dd)
+<a name="0.0.1"></a>
+# 0.0.1 (2020-11-5)
 
-*Features*
-* ...
+**Features**
 
-*Bug Fixes*
-* ...
+- Initial release of HTML Marker Layer and Pie Chart Marker.
 
-*Breaking Changes*
-* ...
