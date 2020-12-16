@@ -54,11 +54,12 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
     */
     constructor(source?: string | azmaps.source.Source, id?: string, options?: HtmlMarkerLayerOptions) {
         super(source, id);
-        /*super(source, id, <azmaps.BubbleLayerOptions>{
+
+        super.setOptions(<azmaps.BubbleLayerOptions>{
             color: 'transparent',
             radius: 0,
             strokeWidth: 0
-        });*/
+        });
 
         this.setOptions(options || {});
     }

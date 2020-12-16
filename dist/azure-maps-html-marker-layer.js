@@ -257,11 +257,11 @@ MIT License
             _this._wrappedEvent = function (e) {
                 _this.map.events.invoke(e.type, _this, e);
             };
-            /*super(source, id, <azmaps.BubbleLayerOptions>{
+            _super.prototype.setOptions.call(_this, {
                 color: 'transparent',
                 radius: 0,
                 strokeWidth: 0
-            });*/
+            });
             _this.setOptions(options || {});
             return _this;
         }
