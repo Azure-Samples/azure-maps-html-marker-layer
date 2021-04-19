@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>HTML Marker Layer - Azure Maps Web SDK Samples</title>
 
     <meta charset="utf-8" />
-	<link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico" />
     <meta http-equiv="x-ua-compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="This sample provides a layer which renders point data from a data source as HTML markers on the map." />
-    <meta name="keywords" content="Microsoft maps, map, gis, API, SDK, markers, pins, pushpins, symbols, layer, clustering, superclusterer, html marker layer" />
+    <meta name="description"
+        content="This sample provides a layer which renders point data from a data source as HTML markers on the map." />
+    <meta name="keywords"
+        content="Microsoft maps, map, gis, API, SDK, markers, pins, pushpins, symbols, layer, clustering, superclusterer, html marker layer" />
     <meta name="author" content="Microsoft Azure Maps" />
 
     <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css"
+        type="text/css" />
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
     <!-- Add a reference to the HTML Marker layer module. -->
@@ -31,8 +35,8 @@
                 zoom: 3,
                 style: 'night',
                 view: 'Auto',
-				
-		        //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -59,12 +63,13 @@
                     markerCallback: (id, position, properties) => {
                         //Check to see if marker represents a cluster.
                         if (properties.cluster) {
+                            //Return either an HtmlMarker
                             return new atlas.HtmlMarker({
                                 position: position,
                                 color: 'DarkViolet',
                                 text: properties.point_count_abbreviated
                             });
-                        } 
+                        }
 
                         //Business logic to define color of marker.
                         var color = 'blue';
@@ -86,17 +91,17 @@
                                 break;
                         }
 
-                        //Create an HtmlMarker with a random color.
-                        return new atlas.HtmlMarker({
+                        //Create an HtmlMarker with a random color using a promise.
+                        return Promise.resolve(new atlas.HtmlMarker({
                             position: position,
                             color: color
-                        });                    
+                        }));
                     }
                 });
 
                 //Add mouse events to the layer to show/hide a popup when hovering over a marker.
                 map.events.add('mouseover', markerLayer, markerHovered);
-                map.events.add('mouseout', markerLayer, hidePopup);  
+                map.events.add('mouseout', markerLayer, hidePopup);
 
                 //Add marker layer to the map.
                 map.layers.add(markerLayer);
@@ -130,16 +135,21 @@
         }
     </script>
 </head>
+
 <body onload="GetMap()">
     <div id="myMap" style="position:relative;width:100%;min-width:290px;height:600px;"></div>
 
     <fieldset style="width:calc(100% - 30px);min-width:290px;margin-top:10px;">
-        <legend><h1 style="font-size:16px">HTML Marker Layer</h1></legend>
-        This sample provides a layer which renders point data from a data source as HTML markers on the map. 
-        Note that the more DOM elements that exist on a page, the slower it becomes. 
-        As such, rendering upwards of 1,000 HTML markers on the map can cause performance issues. 
+        <legend>
+            <h1 style="font-size:16px">HTML Marker Layer</h1>
+        </legend>
+        This sample provides a layer which renders point data from a data source as HTML markers on the map.
+        Note that the more DOM elements that exist on a page, the slower it becomes.
+        As such, rendering upwards of 1,000 HTML markers on the map can cause performance issues.
         Enable clustering on the data source to support larger data sets.
-        This samples uses the open source <a href="https://github.com/Azure-Samples/azure-maps-html-marker-layer" target="_blank">Azure Maps HTML Marker Layer module</a>.
+        This samples uses the open source <a href="https://github.com/Azure-Samples/azure-maps-html-marker-layer"
+            target="_blank">Azure Maps HTML Marker Layer module</a>.
     </fieldset>
 </body>
+
 </html>
