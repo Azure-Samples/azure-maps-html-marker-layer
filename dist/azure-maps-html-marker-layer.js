@@ -194,6 +194,7 @@ MIT License
                     var feature = void 0;
                     var marker = void 0;
                     for (var i = 0, len = shapes.length; i < len; i++) {
+                        var id = void 0;
                         marker = null;
                         if (shapes[i] instanceof azmaps.Shape) {
                             shape = shapes[i];
