@@ -18,7 +18,7 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
         updateWhileMoving: false,
         filter: ['==', ['geometry-type'], 'Point'],
         markerCallback: (id, position, properties) => {
-            if(properties.cluster){
+            if (properties.cluster) {
                 return new azmaps.HtmlMarker({
                     position: position,
                     text: properties.point_count_abbreviated
@@ -35,10 +35,10 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
 
     private _markers: ExtendedHtmlMarker[] = [];
     private _markerIds: string[] = [];
-    private _markerCache: any = {};    
+    private _markerCache: any = {};
 
     private _timer: number;
-    
+
     /** Events supported by the HTML Marker Layer */
     private _supportedEvents = ["click", "contextmenu", "dblclick", "drag", "dragstart", "dragend", "keydown", "keypress", "keyup", "mousedown", "mouseenter", "mouseleave", "mousemove", "mouseout", "mouseover", "mouseup"];
 
@@ -218,12 +218,12 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
      */
     private _sourceUpdated = (e) => {
         const s = this._getSourceClass();
-        
+
         if (s && s.getId() === e.source.id) {
             //this._clearCache(true);
 
             //Check to see if there is a timer already waiting, if so, remove it.
-            if(this._timer){
+            if (this._timer) {
                 clearTimeout(this._timer);
             }
 
@@ -274,7 +274,7 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
     /**
      * Main function that updates all displayed markers on the map.
      */
-    private _updateMarkers = () => {
+    private _updateMarkers = async (): Promise<void> => {
         const self = this;
         const map = self._map;
         const markers = self._markers;
@@ -286,7 +286,7 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
             //const shapes = map.layers.getRenderedShapes(null, self, opt.filter);
 
             const source = self.getSource();
-            const sourceId = (typeof source === 'string')? source : source.getId();
+            const sourceId = (typeof source === 'string') ? source : source.getId();
 
             //@ts-ignore
             const shapes = map.map.querySourceFeatures(sourceId, {
@@ -332,8 +332,7 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
                 }
 
                 if (position) {
-                    marker = self._getMarker(id, position, properties);
-
+                    marker = await self._getMarker(id, position, properties);
                     //Add marker events to wrap layer events.
                     if (!marker._eventsAttached) {
                         self._addEvents(marker);
@@ -363,7 +362,7 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
 
             self._markers = markers.concat(newMarkers);
             self._markerIds = newMarkerIds;
-        } else if(self._markers.length > 0) {
+        } else if (self._markers.length > 0) {
             map.markers.remove(self._markers);
             self._markers = [];
         }
@@ -375,12 +374,12 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
      * @param position The position of the marker.
      * @param properties The properties of the marker.
      */
-    private _getMarker(id: string, position: azmaps.data.Position, properties: any): ExtendedHtmlMarker {
+    private _getMarker(id: string, position: azmaps.data.Position, properties: any): Promise<ExtendedHtmlMarker> {
         const self = this;
         const markerCache = self._markerCache;
         const opt = self._options;
 
-        if(!id){
+        if (!id) {
             //If no id, create an ID based on the position and properties.
             id = position.join(',') + JSON.stringify(properties || {});
         }
@@ -389,23 +388,43 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
         if (markerCache[id]) {
             return markerCache[id];
         } else {
-            const m: ExtendedHtmlMarker = opt.markerCallback(id, position, properties);
-            if (m) {
-                m.properties = properties;
-                m.id = id;
-
-                //Make sure position is set.
-                m.setOptions({
-                    position: position
+            const callbackResult = opt.markerCallback(id, position, properties);
+            if (callbackResult instanceof azmaps.HtmlMarker) {
+                const m = self._getExtendedMarker(callbackResult, id, position, properties);
+                if (m) {
+                    markerCache[id] = m;
+                    return Promise.resolve(m);
+                }
+            } else {
+                return new Promise<ExtendedHtmlMarker>(resolve => {
+                    callbackResult.then(marker => {
+                        const m = self._getExtendedMarker(marker, id, position, properties);
+                        if (m) {
+                            markerCache[id] = m;
+                            resolve(m);
+                        }
+                    });
                 });
-
-                markerCache[id] = m;
-
-                return m;
             }
 
             return null;
         }
+    }
+
+    private _getExtendedMarker(marker: azmaps.HtmlMarker, id: string, position: azmaps.data.Position, properties: any): ExtendedHtmlMarker {
+        const result: ExtendedHtmlMarker = marker;
+        if (result) {
+            result.properties = properties;
+            result.id = id;
+
+            //Make sure position is set.
+            result.setOptions({
+                position: position
+            });
+
+            return result;
+        }
+        return null;
     }
 
     /**
