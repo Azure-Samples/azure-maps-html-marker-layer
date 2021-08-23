@@ -140,13 +140,13 @@ export class PieChartMarker extends azmaps.HtmlMarker implements ExtendedHtmlMar
             rerender = true;
         }
 
-        if (options.text !== opt.text) {
+        if (options.text !== undefined && options.text !== opt.text) {
             //opt.text = options.text;
             super.setOptions({ text: options.text });
             rerender = true;
         }
 
-        if (options.textClassName !== opt.textClassName) {
+        if (options.textClassName !== undefined && options.textClassName !== opt.textClassName) {
             opt.textClassName = options.textClassName;
             rerender = true;
         }
@@ -226,7 +226,7 @@ export class PieChartMarker extends azmaps.HtmlMarker implements ExtendedHtmlMar
                 }
             }
 
-            const text = super.getOptions().text;
+            const text = self.getOptions().text;
             if (text) {
                 svg.push(`<text x="${o}" y="${(o + 7)}" style="font-size:16px;font-family:arial;fill:#000;font-weight:bold;" class="${opt.textClassName || ''}" text-anchor="middle">${text}</text>`);
             }

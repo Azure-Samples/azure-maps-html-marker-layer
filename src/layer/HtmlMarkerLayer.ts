@@ -306,6 +306,7 @@ export class HtmlMarkerLayer extends azmaps.layer.BubbleLayer {
 
             for (let i = 0, len = shapes.length; i < len; i++) {
                 marker = null;
+                id = null;
 
                 if (shapes[i] instanceof azmaps.Shape) {
                     shape = <azmaps.Shape>shapes[i];

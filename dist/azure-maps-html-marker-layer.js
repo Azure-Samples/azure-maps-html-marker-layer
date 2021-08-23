@@ -237,6 +237,7 @@ MIT License
                         case 1:
                             if (!(i < len)) return [3 /*break*/, 4];
                             marker = null;
+                            id = null;
                             if (shapes[i] instanceof azmaps.Shape) {
                                 shape = shapes[i];
                                 if (shape.getType() === 'Point') {
@@ -650,12 +651,12 @@ MIT License
                 opt.values = options.values;
                 rerender = true;
             }
-            if (options.text !== opt.text) {
+            if (options.text !== undefined && options.text !== opt.text) {
                 //opt.text = options.text;
                 _super.prototype.setOptions.call(this, { text: options.text });
                 rerender = true;
             }
-            if (options.textClassName !== opt.textClassName) {
+            if (options.textClassName !== undefined && options.textClassName !== opt.textClassName) {
                 opt.textClassName = options.textClassName;
                 rerender = true;
             }
@@ -716,7 +717,7 @@ MIT License
                         startAngle += angle;
                     }
                 }
-                var text = _super.prototype.getOptions.call(this).text;
+                var text = self.getOptions().text;
                 if (text) {
                     svg.push("<text x=\"" + o + "\" y=\"" + (o + 7) + "\" style=\"font-size:16px;font-family:arial;fill:#000;font-weight:bold;\" class=\"" + (opt.textClassName || '') + "\" text-anchor=\"middle\">" + text + "</text>");
                 }
