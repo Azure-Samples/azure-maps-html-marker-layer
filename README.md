@@ -15,6 +15,14 @@ An Azure Maps Web SDK module that provides a layer that renders point data from 
 
 Only Point features will be rendered and not any points from other feature types.
 
+Note that this is an **experimental library** that attempts to achieve the following:
+
+- Power the creation of HTML markers with a data sources, and thus unlock the benifits of using data sources, usch as clustering, for HTML markers.
+- Support larger data sets by dynamically adding/removing items based on the map view, thus increasing potential performance of using HTML markers. 
+- Add a way to create fully interactive pie charts as markers on the map.
+
+Note that HTML markers will only render in a single "world" of the map. When zoomed out a lot, it is possible the map will show copies of the world. Most layers will 
+
 ## Getting started
 
 Download the project and copy the `azure-maps-html-marker-layer` JavaScript file from the `dist` folder into your project. 
