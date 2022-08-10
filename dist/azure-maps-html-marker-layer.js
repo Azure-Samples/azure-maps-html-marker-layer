@@ -1,4 +1,6 @@
 /*
+azure-maps-html-marker-layer Version: 0.0.1
+
 MIT License
 
     Copyright (c) Microsoft Corporation.
